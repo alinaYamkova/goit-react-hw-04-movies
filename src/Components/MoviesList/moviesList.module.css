@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  background-color: rgb(180, 225, 213);
+  color: #212121;
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+:global(.myClass) {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(4, 5, 44);
+}
+
+.Title {
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(4, 5, 44);
+}
+
+.titleRating {
+  font-size: 18px;
+  font-weight: 600;
+  color:rgb(248, 248, 248);
+  background-color: rgb(0, 20, 85);
+  margin-left: 10px;
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+
+.titleRelise {
+  font-size: 16px;
+  color:rgb(233, 73, 15);
+}
+
+.titleOverview {
+  font-style: italic;
+  font-weight: 500;
+  color: rgb(4, 5, 44);
+}
+
+.popularity {
+  font-size: 18px;
+  font-weight: 600;
+  color:rgb(248, 248, 248);
+  background-color: rgb(57, 0, 85);
+  margin-left: 10px;
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+
+.List {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-gap: 24px;
+}
+
+/* .ListBody {
+
+} */

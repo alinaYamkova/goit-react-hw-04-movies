@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  background-color: rgb(180, 225, 213);
+  color: #212121;
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+:global(.myClass) {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(4, 5, 44);
+}
+
+.NavLink {
+  text-align: center;
+  font-size: 24px;
+  counter-reset: currentColor;
+}
+
+.active {
+  color: rgb(209, 49, 102);
+  font-style: italic;
+}
+
+.Title {
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(4, 5, 44);
+}
+
+.titleRating {
+  font-size: 16px;
+  font-weight: 600;
+  color:rgb(213, 8, 8);
+}
+
+.titleRelise {
+  font-size: 16px;
+  color:rgb(233, 73, 15);
+}
+
+.titleOverview {
+  font-style: italic;
+  font-weight: 500;
+  color: rgb(4, 5, 44);
+}
+
+.MovieGallery {
+  display: grid;
+  max-width: calc(100vw - 48px);
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-gap: 16px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.AppBar {
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-bottom: 1px solid #ccc;
+}
+
+.btn {
+  background-color: #0baeba;
+  border: none;
+  color: white;
+  padding: 6px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 40px;
+  cursor: pointer;
+  border-radius: 4px;
+
+}

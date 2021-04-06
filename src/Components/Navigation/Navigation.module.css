@@ -1,0 +1,33 @@
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 40px;
+  padding: 10px 25px;
+  font-size: 20px;
+  font-style: oblique;
+  text-decoration: none;
+}
+
+.nav > item {
+  margin: 10px;
+  border-radius: 2px;
+  border: 2px solid white;
+  text-decoration: none;
+  background-color: teal;
+}
+
+.navLink {
+  display: flex;
+  color: #021d33;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-shadow: 0px 0px 10px rgb(132, 211, 235);
+  text-decoration: none;
+
+}
+
+.navLinkActive {
+  color: red;
+  text-decoration: none;
+}
