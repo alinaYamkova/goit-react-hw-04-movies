@@ -1,32 +1,32 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import s from './form.module.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import s from "./form.module.css";
 
 class Form extends Component {
   static propTypes = {
     onSubmit: PropTypes.func,
   };
-  
+
   state = {
-    searchQuery: '',
+    searchQuery: "",
   };
 
   handleChange = (e) => {
     this.setState({ searchQuery: e.target.value });
   };
-  
+
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.onSubmit( this.state.searchQuery);
-    this.setState({ searchQuery: '' });
+    this.props.onSubmit(this.state.searchQuery);
+    this.setState({ searchQuery: "" });
   };
 
   render() {
     const { searchQuery } = this.state;
 
     return (
-       <header className={s.Searchbar}>
-        <form  onSubmit={this.handleSubmit} className={s.SearchForm}>
+      <header className={s.Searchbar}>
+        <form onSubmit={this.handleSubmit} className={s.SearchForm}>
           <button type="submit" className={s.SearchFormButton}>
             <span className={s.SearchFormButtonLabel}>Search</span>
           </button>
@@ -44,7 +44,6 @@ class Form extends Component {
         </form>
       </header>
     );
-  };
+  }
 }
-export default Form
-          
+export default Form;

@@ -39,12 +39,12 @@ img {
 .titleRating {
   font-size: 16px;
   font-weight: 600;
-  color:rgb(213, 8, 8);
+  color: rgb(213, 8, 8);
 }
 
 .titleRelise {
   font-size: 16px;
-  color:rgb(233, 73, 15);
+  color: rgb(233, 73, 15);
 }
 
 .titleOverview {
@@ -87,5 +87,4 @@ img {
   margin: 4px 40px;
   cursor: pointer;
   border-radius: 4px;
-
 }

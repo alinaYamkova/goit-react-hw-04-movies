@@ -28,7 +28,7 @@ img {
 .titleRating {
   font-size: 18px;
   font-weight: 600;
-  color:rgb(248, 248, 248);
+  color: rgb(248, 248, 248);
   background-color: rgb(0, 20, 85);
   margin-left: 10px;
   padding: 3px 5px;
@@ -37,7 +37,7 @@ img {
 
 .titleRelise {
   font-size: 16px;
-  color:rgb(233, 73, 15);
+  color: rgb(233, 73, 15);
 }
 
 .titleOverview {
@@ -49,7 +49,7 @@ img {
 .popularity {
   font-size: 18px;
   font-weight: 600;
-  color:rgb(248, 248, 248);
+  color: rgb(248, 248, 248);
   background-color: rgb(57, 0, 85);
   margin-left: 10px;
   padding: 3px 5px;
