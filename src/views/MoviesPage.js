@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from "react";
 import { Route } from "react-router-dom";
 import api from "../ApiServise/Api";
-import Loader from '../data/Loader';
+import Loader from "../data/Loader";
 import Form from "../Components/Form/Form";
 import MoviesList from "../Components/MoviesList/MoviesList";
 import s from "../Styles/styles.module.css";
@@ -25,28 +25,28 @@ class MoviesPage extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { searchQuery } = this.state;
 
-    if (prevState.searchQuery !== searchQuery && searchQuery !== '') {
+    if (prevState.searchQuery !== searchQuery && searchQuery !== "") {
       this.searchMoves();
     }
-  };
+  }
 
   searchMoves() {
     const { searchQuery, currentPage } = this.state;
-    this.setState({ isLoading: true});
+    this.setState({ isLoading: true });
 
-    api.getMovies(searchQuery).then((result) => { 
-      if(result.length) {
+    api.getMovies(searchQuery).then((result) => {
+      if (result.length) {
         this.setState((prevState) => ({
-          someQuery: [ ...result],
-          resultLength: result.length, 
-          currentPage: prevState.currentPage + 1 
-        }))
+          someQuery: [...result],
+          resultLength: result.length,
+          currentPage: prevState.currentPage + 1,
+        }));
       } else {
-        this.setState({msg: 'Please write a correct search'});
+        this.setState({ msg: "Please write a correct search" });
         alert(this.state.msg);
       }
-    })
-  };
+    });
+  }
 
   handleSubmit = (searchQuery) => {
     const { history, location } = this.props;
@@ -60,12 +60,14 @@ class MoviesPage extends Component {
     return (
       <>
         <header className={s.Searchbar}></header>
-
         <Form onSubmit={this.handleSubmit} />
-
         {someQuery && (
-          <Suspense fallback={
-            <div className={s.loaderContainer}><Loader /></div>}
+          <Suspense
+            fallback={
+              <div className={s.loaderContainer}>
+                <Loader />
+              </div>
+            }
           >
             {/* <Route
               to={`movies/query=${searchQuery}`}
@@ -73,7 +75,8 @@ class MoviesPage extends Component {
             /> */}
             <MoviesList movies={someQuery} />
           </Suspense>
-        )};
+        )}
+        ;
       </>
     );
   }

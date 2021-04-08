@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import api from "../ApiServise/Api";
 import MoviesList from "../Components/MoviesList/MoviesList";
-import s from '../Styles/styles.module.css'
+import s from "../Styles/styles.module.css";
 
 class HomePage extends Component {
   state = {
@@ -9,9 +9,9 @@ class HomePage extends Component {
   };
 
   async componentDidMount() {
-    const response = await api.getPopulars()
+    const response = await api.getPopulars();
     this.setState({ movies: response });
-    console.log(response)
+    console.log(response);
   }
 
   render() {

@@ -21,7 +21,7 @@
 }
 
 .Title {
-  font-family: 'Dosis', sans-serif;
+  font-family: "Dosis", sans-serif;
   color: rgb(0, 0, 0);
   padding: 6px;
   text-transform: uppercase;
@@ -32,5 +32,5 @@
 
 ul {
   display: flex;
-  width: (100% - 15px ) / 5;
+  width: (100% - 15px) / 5;
 }

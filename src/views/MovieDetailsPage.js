@@ -2,7 +2,7 @@
 import React, { Component, Suspense } from "react";
 import api from "../ApiServise/Api";
 import { Route, Switch, NavLink } from "react-router-dom";
-import Loader from '../data/Loader'
+import Loader from "../data/Loader";
 import Cast from "../Components/Cast/Cast";
 import Review from "../Components/Review/Review";
 import routes from "../routes";
@@ -10,7 +10,7 @@ import s from "../Styles/styles.module.css";
 
 class MovieDetailsPage extends Component {
   state = {
-    query: '',
+    query: "",
     title: null,
     name: null,
     overview: null,
@@ -23,8 +23,8 @@ class MovieDetailsPage extends Component {
 
   componentDidMount() {
     const { movieId } = this.props.match.params;
-    const response = api.getMovies(movieId)
-    this.setState({ ...response,  isLoading: true });
+    const response = api.getMovies(movieId);
+    this.setState({ ...response, isLoading: true });
   }
 
   handleGoBack = () => {
@@ -34,7 +34,15 @@ class MovieDetailsPage extends Component {
 
   render() {
     const { match, location } = this.props;
-    const { title, name, overview, genres, poster_path, release_date, vote_average } = this.state;
+    const {
+      title,
+      name,
+      overview,
+      genres,
+      poster_path,
+      release_date,
+      vote_average,
+    } = this.state;
     const imgUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
     return (
       <>
@@ -43,17 +51,15 @@ class MovieDetailsPage extends Component {
         </button>
 
         <section>
-          <div>
-            {poster_path && <img src={imgUrl} alt={title || name}/>}
-          </div>
-          <div className={s.description} >
+          <div>{poster_path && <img src={imgUrl} alt={title || name} />}</div>
+          <div className={s.description}>
             <h1>{title || name}</h1>
             <p>User Score: {vote_average}</p>
             {/* ({release_date && release_date.slice(0, 4)}) */}
             <h3>Overview</h3>
             <p>{overview}</p>
             <h3>Genres</h3>
-              {genres && <p>{genres.map(genre=>` ${genre.name}, `)}</p>}
+            {genres && <p>{genres.map((genre) => ` ${genre.name}, `)}</p>}
           </div>
         </section>
 
@@ -85,19 +91,19 @@ class MovieDetailsPage extends Component {
               </li>
             </ul>
           </div>
-            <Suspense
-              fallback={
-                <div className={s.loaderContainer}>
-                  <Loader />
-                </div>
-              }>
-              <Switch>
-                <Route path={`${match.path}/cast`} componen={Cast} />
-                <Route path={`${match.path}/review`} componen={Review} />
-              </Switch>
-            </Suspense>
+          <Suspense
+            fallback={
+              <div className={s.loaderContainer}>
+                <Loader />
+              </div>
+            }
+          >
+            <Switch>
+              <Route path={`${match.path}/cast`} componen={Cast} />
+              <Route path={`${match.path}/review`} componen={Review} />
+            </Switch>
+          </Suspense>
         </section>
-      
       </>
     );
   }

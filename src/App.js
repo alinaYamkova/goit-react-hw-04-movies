@@ -14,7 +14,9 @@ const MoviesPage = lazy(() =>
   import("./views/MoviesPage" /* webpackChunkName: "movies-page" */)
 );
 const MovieDetailsPage = lazy(() =>
-  import("./views/MovieDetailsPage" /* webpackChunkName: "movie-details-page" */ )
+  import(
+    "./views/MovieDetailsPage" /* webpackChunkName: "movie-details-page" */
+  )
 );
 // const Review = lazy(() =>
 //   import("./views/Review" /* webpackChunkName: "review" */)
@@ -27,15 +29,17 @@ const App = () => (
       <Navigation />
     </AppBar>
 
-    <Suspense fallback={
-      <Loader  
-        type="BallTriangle" 
-        color="#00BFFF" 
-        height={80}
-        width={80} 
-        timeout={2500} 
-      />
-    }>
+    <Suspense
+      fallback={
+        <Loader
+          type="BallTriangle"
+          color="#00BFFF"
+          height={80}
+          width={80}
+          timeout={2500}
+        />
+      }
+    >
       <Switch>
         <Route exact path={routes.homePage} component={HomePage} />
         <Route path={routes.movieDetailsPage} component={MovieDetailsPage} />

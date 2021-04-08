@@ -23,7 +23,6 @@ const Navigation = () => {
         Movies
       </NavLink>
 
-      
       {/* <NavLink
         // exact
         to={routes.movieDetailsPage}
