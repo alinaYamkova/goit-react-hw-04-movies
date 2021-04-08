@@ -17,24 +17,6 @@ img {
   color: rgb(4, 5, 44);
 }
 
-.Title {
-  padding: 0;
-  margin: 0;
-  font-size: 20px;
-  font-weight: 500;
-  color: rgb(4, 5, 44);
-}
-
-.titleRating {
-  font-size: 18px;
-  font-weight: 600;
-  color: rgb(248, 248, 248);
-  background-color: rgb(0, 20, 85);
-  margin-left: 10px;
-  padding: 3px 5px;
-  border-radius: 4px;
-}
-
 .titleRelise {
   font-size: 16px;
   color: rgb(233, 73, 15);
@@ -56,17 +38,23 @@ img {
   border-radius: 4px;
 }
 
-.List {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-
+.movieList {
   display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  grid-gap: 24px;
+  max-width: calc(100vw - 48px);
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* .ListBody {
+ul {
+  display: flex;
+}
 
-} */
+.listBox {
+  padding-top: 20px;
+}

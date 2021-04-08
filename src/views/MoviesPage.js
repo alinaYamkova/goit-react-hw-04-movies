@@ -1,65 +1,79 @@
-import React, { Component, Suspense, lazy } from "react";
+import React, { Component, Suspense } from "react";
+import { Route } from "react-router-dom";
 import api from "../ApiServise/Api";
-import queryString from "query-string";
+import Loader from '../data/Loader';
 import Form from "../Components/Form/Form";
 import MoviesList from "../Components/MoviesList/MoviesList";
 import s from "../Styles/styles.module.css";
 
 class MoviesPage extends Component {
   state = {
-    movies: [],
-    searchQuery: "",
-    location: [],
-    error: null,
+    searchQuery: null,
+    someQuery: null,
+    currentPage: 1,
+    isLoading: false,
+    msg: null,
   };
 
-  // componentDidMount() {
-  //   const { search, pathname } = this.props.location;
-  //   const searchParams = queryString.parse(search);
-  //   if (pathname && search) {
-  //       this.setState({ searchQuery: searchParams.query });
-  //   }
-  // };
-
-  async componentDidUpdate(prevState, prevProps) {
-    const { searchQuery } = this.state;
-    if (prevState.searchQuery !== searchQuery) {
-      const responce = await api.getMovies(searchQuery);
-      this.setState({ movies: responce.results });
+  componentDidMount() {
+    const { pathname, search } = this.props.location;
+    if (pathname && search) {
+      this.setState({ searchQuery: search.slice(7) });
     }
   }
 
-  handleSubmit = (data) => {
-    const { history, location } = this.props;
-    this.setState({ searchQuery: data.name });
-    history.push({ ...location, search: `query=${data.name}` });
+  componentDidUpdate(prevProps, prevState) {
+    const { searchQuery } = this.state;
+
+    if (prevState.searchQuery !== searchQuery && searchQuery !== '') {
+      this.searchMoves();
+    }
   };
 
-  // getName = (title, name) => {
-  //   const {movies} = this.state;
-  //   const getTitle = (movies.title) ? this.setState({name: title}) :
-  //     (movies.name) ? this.setState({name}) :
-  //     'NONAME';
-  //   return getTitle;
-  // };
+  searchMoves() {
+    const { searchQuery, currentPage } = this.state;
+    this.setState({ isLoading: true});
+
+    api.getMovies(searchQuery).then((result) => { 
+      if(result.length) {
+        this.setState((prevState) => ({
+          someQuery: [ ...result],
+          resultLength: result.length, 
+          currentPage: prevState.currentPage + 1 
+        }))
+      } else {
+        this.setState({msg: 'Please write a correct search'});
+        alert(this.state.msg);
+      }
+    })
+  };
+
+  handleSubmit = (searchQuery) => {
+    const { history, location } = this.props;
+    this.setState({ searchQuery });
+    history.push({ ...location, search: `query=${searchQuery.trim()}` });
+  };
 
   render() {
-    const { searchQuery, movies } = this.state;
+    const { searchQuery, someQuery } = this.state;
+    // const { match, location, history } = this.props;
     return (
       <>
-        <header className={s.Searchbar}>
-          <h2 className={s.NavLink}>Movies Page</h2>
-        </header>
+        <header className={s.Searchbar}></header>
+
         <Form onSubmit={this.handleSubmit} />
-        {/* {movies && (
-          <Suspense fallback={ <h2> Loading... </h2> }>
-            <Route
-              to={`movies/query=${query}`}
-              render={props => <FoundFilms films={query} {...props} /> }
-            />
+
+        {someQuery && (
+          <Suspense fallback={
+            <div className={s.loaderContainer}><Loader /></div>}
+          >
+            {/* <Route
+              to={`movies/query=${searchQuery}`}
+              render={props => <MoviesList movies={someQuery} {...this.props} /> }
+            /> */}
+            <MoviesList movies={someQuery} />
           </Suspense>
-        )}; */}
-        {searchQuery && <MoviesList movies={movies} />}
+        )};
       </>
     );
   }

@@ -22,7 +22,9 @@ const Navigation = () => {
       >
         Movies
       </NavLink>
-      <NavLink
+
+      
+      {/* <NavLink
         // exact
         to={routes.movieDetailsPage}
         className="navLink"
@@ -45,7 +47,7 @@ const Navigation = () => {
         activeClassName="navLinkActive"
       >
         Review
-      </NavLink>
+      </NavLink> */}
     </nav>
   );
 };
