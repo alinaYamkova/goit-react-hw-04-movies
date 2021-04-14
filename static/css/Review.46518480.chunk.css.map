@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/Components/Review/reviews.module.css"],"names":[],"mappings":"AAAA,uBACE,UAAY,CACZ,oBAAqB,CACrB,iBACF","file":"Review.46518480.chunk.css","sourcesContent":[".review {\n  color: black;\n  display: inline-block;\n  padding: 35px 20px;\n}\n"]}
