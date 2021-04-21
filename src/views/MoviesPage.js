@@ -62,7 +62,13 @@ class MoviesPage extends Component {
         <header className={s.Searchbar}></header>
         <Form onSubmit={this.handleSubmit} />
         {someQuery && (
-          <Suspense fallback={ <div className={s.loaderContainer}><Loader /></div> }>
+          <Suspense
+            fallback={
+              <div className={s.loaderContainer}>
+                <Loader />
+              </div>
+            }
+          >
             <MoviesList movies={someQuery} />
           </Suspense>
         )}

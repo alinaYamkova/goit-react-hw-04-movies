@@ -19,7 +19,8 @@ class Review extends Component {
   scrollWindow = () => {
     window.scrollTo({
       top: document.documentElement.scrollHeight,
-      behavior: 'smooth'})
+      behavior: "smooth",
+    });
   };
 
   render() {
@@ -27,7 +28,7 @@ class Review extends Component {
     return (
       <div className={s.reviewBox}>
         <h1 className={s.title}>Reviews</h1>
-          <ul>
+        <ul>
           {reviews ? (
             reviews.map(({ author, content, id }) => (
               <li key={id}>
@@ -35,7 +36,9 @@ class Review extends Component {
                 <p className={s.content}>{content}</p>
               </li>
             ))
-          ) : ( <p> no reviews </p> )}
+          ) : (
+            <p> no reviews </p>
+          )}
         </ul>
       </div>
     );

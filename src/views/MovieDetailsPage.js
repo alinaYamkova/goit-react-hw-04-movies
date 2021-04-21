@@ -16,7 +16,6 @@ const Review = lazy(() =>
   import("../Components/Review/Review" /* webpackChunkName: "Review" */)
 );
 
-
 class MovieDetailsPage extends Component {
   state = {
     movieObj: {},
@@ -78,11 +77,18 @@ class MovieDetailsPage extends Component {
               </li>
             </ul>
             <Suspense
-              fallback={   <div className={s.loaderContainer}><Loader /></div> }
+              fallback={
+                <div className={s.loaderContainer}>
+                  <Loader />
+                </div>
+              }
             >
               <Switch>
                 <Route path={`${match.path}/cast`} component={Cast}></Route>
-                <Route path={`${match.path}/reviews`} component={Review}></Route>
+                <Route
+                  path={`${match.path}/reviews`}
+                  component={Review}
+                ></Route>
               </Switch>
             </Suspense>
           </div>

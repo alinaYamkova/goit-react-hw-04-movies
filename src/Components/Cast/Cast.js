@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import api from "../../ApiServise/Api";
 import s from "../Cast/cast.module.css";
-import img from '../../data/image.png'
+import img from "../../data/image.png";
 
 class Cast extends Component {
   state = {
@@ -11,9 +11,9 @@ class Cast extends Component {
 
   async componentDidMount() {
     // console.log(this.props);
-    const movieId  = this.props.match.params.movieId;
+    const movieId = this.props.match.params.movieId;
     const response = await api.getCast(movieId);
-    console.log('casts: ', response)
+    console.log("casts: ", response);
     this.setState({ casts: response });
     this.scrollWindow();
   }
@@ -21,7 +21,8 @@ class Cast extends Component {
   scrollWindow = () => {
     window.scrollTo({
       top: document.documentElement.scrollHeight,
-      behavior: 'smooth'})
+      behavior: "smooth",
+    });
   };
 
   render() {
@@ -34,17 +35,23 @@ class Cast extends Component {
             casts.map(({ id, profile_path, name, character }) => (
               <li key={id} className={s.castItem}>
                 <img
-                  src={profile_path
-                    ? `https://image.tmdb.org/t/p/w500${profile_path}`
-                    : img }
-                  alt={ name }
+                  src={
+                    profile_path
+                      ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                      : img
+                  }
+                  alt={name}
                   className={s.castImage}
                 />
                 <p className={s.name}>{name}</p>
-                <p className={s.character}>Character: {character || "unknown"}</p>
+                <p className={s.character}>
+                  Character: {character || "unknown"}
+                </p>
               </li>
-            )) 
-          ) : ( <p className={s.character}>We don't have cast for this movie.</p> )}
+            ))
+          ) : (
+            <p className={s.character}>We don't have cast for this movie.</p>
+          )}
         </ul>
       </div>
     );
@@ -52,10 +59,6 @@ class Cast extends Component {
 }
 
 export default Cast;
-
-
-
-
 
 // class Cast extends Component {
 //   state = {

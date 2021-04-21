@@ -18,7 +18,6 @@ const MoviesList = ({ movies }) => {
   );
 };
 
-
 export default MoviesList;
 
 MoviesList.propTypes = {

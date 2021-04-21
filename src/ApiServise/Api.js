@@ -28,34 +28,33 @@ function getMovieDetails(movieId) {
   return axios
     .get(`movie/${movieId}?api_key=${key}&language=en-US`)
     .then((response) => {
-       return response.data
+      return response.data;
     })
     .catch((error) => {
       console.error(error);
     });
 }
 
-
 function getCast(movieId) {
   return axios
     .get(`movie/${movieId}/credits?api_key=${key}&language=en-US`)
     .then((response) => {
-      return response.data.cast
-   })
-   .catch((error) => {
-     console.error(error);
-   });
+      return response.data.cast;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 function getReview(movieId) {
   return axios
     .get(`movie/${movieId}/reviews?api_key=${key}&language=en-US`)
     .then((response) => {
-      return response
-   })
-   .catch((error) => {
-     console.error(error);
-   });
+      return response;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 const api = { getPopulars, getMovies, getMovieDetails, getCast, getReview };

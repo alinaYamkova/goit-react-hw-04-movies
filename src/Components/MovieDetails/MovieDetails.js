@@ -2,18 +2,28 @@ import React from "react";
 import PropTypes from "prop-types";
 import s from "../MovieDetails/movieDetails.module.css";
 // import { withRouter } from "react-router-dom";
-{/* {movieObj.map(({poster_path, backdrop_path, title, vote_average, overview}) => ( */}
+{
+  /* {movieObj.map(({poster_path, backdrop_path, title, vote_average, overview}) => ( */
+}
 
 const MovieDetails = ({ movieObj, genres }) => {
-  const { id, poster_path, backdrop_path, title, name, vote_average, overview } = movieObj;
-  const posterUrl =`https://image.tmdb.org/t/p/w500${poster_path}`;
-  const backdropUrl =`https://image.tmdb.org/t/p/w500${backdrop_path}`;  
+  const {
+    id,
+    poster_path,
+    backdrop_path,
+    title,
+    name,
+    vote_average,
+    overview,
+  } = movieObj;
+  const posterUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  const backdropUrl = `https://image.tmdb.org/t/p/w500${backdrop_path}`;
   // console.log(movieObj);
   return (
     <div className={s.box}>
       <div>
         <img
-          src={ posterUrl || backdropUrl }
+          src={posterUrl || backdropUrl}
           alt={title || name}
           key={id}
           className={s.image}
@@ -33,15 +43,19 @@ const MovieDetails = ({ movieObj, genres }) => {
           </li>
           <li>
             <p className={s.title}>Genres:</p>
-            {genres && genres.map((genre) => (
-              <p className={s.text} key={genre.id}> {genre.name}</p>))}
+            {genres &&
+              genres.map((genre) => (
+                <p className={s.text} key={genre.id}>
+                  {" "}
+                  {genre.name}
+                </p>
+              ))}
           </li>
         </ul>
       </div>
     </div>
-  );  
+  );
 };
-
 
 MovieDetails.propTypes = {
   MovieDetails: PropTypes.shape({
