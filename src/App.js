@@ -23,31 +23,33 @@ const MovieDetailsPage = lazy(() =>
 // );
 // const Cast = lazy(() => import("./views/Cast" /* webpackChunkName: "cast" */));
 
-const App = () => (
-  <>
-    <AppBar>
-      <Navigation />
-    </AppBar>
+const App = () => {
+  return (
+    <>
+      <AppBar>
+        <Navigation />
+      </AppBar>
 
-    <Suspense
-      fallback={
-        <Loader
-          type="BallTriangle"
-          color="#00BFFF"
-          height={80}
-          width={80}
-          timeout={2500}
-        />
-      }
-    >
-      <Switch>
-        <Route exact path={routes.homePage} component={HomePage} />
-        <Route path={routes.movieDetailsPage} component={MovieDetailsPage} />
-        <Route exact path={routes.moviesPage} component={MoviesPage} />
-        <Route component={HomePage} />
-      </Switch>
-    </Suspense>
-  </>
-);
+      <Suspense
+        fallback={
+          <Loader
+            type="BallTriangle"
+            color="#00BFFF"
+            height={80}
+            width={80}
+            timeout={2500}
+          />
+        }
+      >
+        <Switch>
+          <Route exact path={routes.homePage} component={HomePage} />
+          <Route path={routes.movieDetailsPage} component={MovieDetailsPage} />
+          <Route path={routes.moviesPage} component={MoviesPage} />
+          <Route component={HomePage} />
+        </Switch>
+      </Suspense>
+    </>
+  );
+};
 
 export default App;

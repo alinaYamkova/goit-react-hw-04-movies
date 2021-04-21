@@ -5,29 +5,37 @@ import s from "./reviews.module.css";
 
 class Review extends Component {
   state = {
-    reviews: null,
+    reviews: [],
   };
 
   async componentDidMount() {
     const { movieId } = this.props.match.params;
     const response = await api.getReview(movieId);
-    this.setState({ reviews: response });
+    // console.log('reviews: ', response.data.results)
+    this.setState({ reviews: response.data.results });
+    this.scrollWindow();
   }
+
+  scrollWindow = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth'})
+  };
 
   render() {
     const { reviews } = this.state;
     return (
-      <div className={s.reviews}>
-        <ul>
-          {reviews.map(({ author, content, created_at, id }) => {
-            return (
+      <div className={s.reviewBox}>
+        <h1 className={s.title}>Reviews</h1>
+          <ul>
+          {reviews ? (
+            reviews.map(({ author, content, id }) => (
               <li key={id}>
-                <h4>{author}</h4>
-                <p>{created_at}</p>
-                <p>{content}</p>
+                <h3 className={s.author}>{author}</h3>
+                <p className={s.content}>{content}</p>
               </li>
-            );
-          })}
+            ))
+          ) : ( <p> no reviews </p> )}
         </ul>
       </div>
     );
@@ -37,5 +45,5 @@ class Review extends Component {
 export default Review;
 
 Review.propTypes = {
-  moviesId: PropTypes.string,
+  movieId: PropTypes.string,
 };

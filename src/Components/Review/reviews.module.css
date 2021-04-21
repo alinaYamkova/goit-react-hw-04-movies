@@ -1,5 +1,25 @@
-.review {
+.reviewBox {
   color: black;
   display: inline-block;
-  padding: 35px 20px;
+  /* padding: 35px 20px; */
+  margin: 0 auto;
+}
+
+.title {
+  padding-left: 40px;
+  font-variant: small-caps;
+}
+
+.content {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.author {
+  color: fff;
+  font-weight: 600;
+}
+li {
+  list-style: none;
 }

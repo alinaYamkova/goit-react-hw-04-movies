@@ -1,12 +1,47 @@
+.castBox {
+  /* max-width: 1100px; */
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
 .castList {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
 }
+
 .castItem {
-  width: calc((100% - 15px) / 3);
-  margin-right: 5px;
-  margin-bottom: 20px;
+  width: calc((100% - 5px) / 5);
+  margin-right: 20px;
+  margin-bottom: 10px;
+  list-style: none;
+  border: 1px solid lightseagreen;
 }
+
 .castImage {
-  width: 100px;
+  width: 100%;
+  object-fit: cover;
+  height: 150px;
+}
+
+.castItem:nth-child(4n) {
+    margin-right: 0;
+}
+
+.name {
+  margin: 5px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.character {
+  margin: 0 5px;
+}
+
+.title {
+  padding-left: 45px;
+  font-variant: small-caps;
 }

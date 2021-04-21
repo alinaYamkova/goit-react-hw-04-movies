@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from "react";
-import { Route } from "react-router-dom";
+// import { Route } from "react-router-dom";
 import api from "../ApiServise/Api";
 import Loader from "../data/Loader";
 import Form from "../Components/Form/Form";
@@ -31,7 +31,7 @@ class MoviesPage extends Component {
   }
 
   searchMoves() {
-    const { searchQuery, currentPage } = this.state;
+    const { searchQuery } = this.state;
     this.setState({ isLoading: true });
 
     api.getMovies(searchQuery).then((result) => {
@@ -55,28 +55,17 @@ class MoviesPage extends Component {
   };
 
   render() {
-    const { searchQuery, someQuery } = this.state;
+    const { someQuery } = this.state;
     // const { match, location, history } = this.props;
     return (
       <>
         <header className={s.Searchbar}></header>
         <Form onSubmit={this.handleSubmit} />
         {someQuery && (
-          <Suspense
-            fallback={
-              <div className={s.loaderContainer}>
-                <Loader />
-              </div>
-            }
-          >
-            {/* <Route
-              to={`movies/query=${searchQuery}`}
-              render={props => <MoviesList movies={someQuery} {...this.props} /> }
-            /> */}
+          <Suspense fallback={ <div className={s.loaderContainer}><Loader /></div> }>
             <MoviesList movies={someQuery} />
           </Suspense>
         )}
-        ;
       </>
     );
   }

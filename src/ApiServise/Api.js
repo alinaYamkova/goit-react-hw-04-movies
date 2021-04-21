@@ -16,7 +16,7 @@ function getPopulars() {
 function getMovies(query) {
   return axios
     .get(
-      `search/multi?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`
+      `search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`
     )
     .then((response) => response.data.results)
     .catch((error) => {
@@ -24,26 +24,40 @@ function getMovies(query) {
     });
 }
 
-function getCast(movieId) {
+function getMovieDetails(movieId) {
   return axios
-    .get(`movie/${movieId}/credits?api_key=${key}&language=en-US`)
-    .then((response) => response.data.cast)
+    .get(`movie/${movieId}?api_key=${key}&language=en-US`)
+    .then((response) => {
+       return response.data
+    })
     .catch((error) => {
       console.error(error);
     });
+}
+
+
+function getCast(movieId) {
+  return axios
+    .get(`movie/${movieId}/credits?api_key=${key}&language=en-US`)
+    .then((response) => {
+      return response.data.cast
+   })
+   .catch((error) => {
+     console.error(error);
+   });
 }
 
 function getReview(movieId) {
   return axios
-    .get(`movie/${movieId}/reviews?api_key=${key}&language=en-US&page=1`)
-    .then((response) => response.data.results)
-    .catch((error) => {
-      console.error(error);
-    });
+    .get(`movie/${movieId}/reviews?api_key=${key}&language=en-US`)
+    .then((response) => {
+      return response
+   })
+   .catch((error) => {
+     console.error(error);
+   });
 }
 
-export default { getPopulars, getMovies, getCast, getReview };
+const api = { getPopulars, getMovies, getMovieDetails, getCast, getReview };
 
-// getFetch.propTypes = {
-//   page: PropTypes.number.isRequired,
-// };
+export default api;
